@@ -17,7 +17,7 @@
     
     function onAssetsLoaded() {
         // create a new Sprite using one of those textures
-        bkg1 = new PIXI.Sprite(PIXI.TextureCache['img/bkg-1.jpg']);
+        bkg1 = new PIXI.Sprite(PIXI.Texture.fromImage('img/bkg-1.jpg'));
         stage.addChild(bkg1);
         
         // create ship object
