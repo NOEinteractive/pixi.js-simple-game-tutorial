@@ -7,16 +7,25 @@
     document.body.appendChild(renderer.view);
     
     //here we just doing some tests for now
-	var bkg1 = null;
+	var bkg1 = null,
+      ship = null;
     
-    var loader = new S.Loader(['img/bkg-1.jpg', 'img/bkg-2.jpg']);
-    loader.addEventListener('complete', function() {
+    // load all needed assets
+    var loader = new PIXI.AssetLoader(['img/bkg-1.jpg', 'img/bkg-2.jpg', 'img/ship.json']);
+    loader.onComplete = onAssetsLoaded;
+	loader.load();
+    
+    function onAssetsLoaded() {
         // create a new Sprite using one of those textures
         bkg1 = new PIXI.Sprite(PIXI.TextureCache['img/bkg-1.jpg']);
         stage.addChild(bkg1);
+        
+        // create ship object
+        ship = new S.Ship;
+        stage.addChild(ship);
+        
         requestAnimFrame( animate );
-    });
-    
+    }
 
 	function animate() {
 	
