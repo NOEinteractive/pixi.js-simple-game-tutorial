@@ -15,3 +15,8 @@ S.Ship = function() {
 S.Ship.constructor = S.Ship;
 // Ship object extend PIXI Sprite object
 S.Ship.prototype = Object.create( PIXI.MovieClip.prototype );
+
+S.Ship.prototype.updateTransform = function() {
+    this.position.x += 0.2;
+    PIXI.MovieClip.prototype.updateTransform.call( this );
+}
