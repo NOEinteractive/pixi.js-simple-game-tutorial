@@ -23,7 +23,7 @@ S.Ship = function() {
 }
 
 S.Ship.constructor = S.Ship;
-// Ship object extend PIXI Sprite object
+// Ship object extend PIXI Movieclip object
 S.Ship.prototype = Object.create( PIXI.MovieClip.prototype );
 
 /**
