@@ -34,6 +34,9 @@
         ship = new S.Ship;
         stage.addChild(ship);
         
+        // init controls
+        S.Controls.start();
+        
         requestAnimFrame( animate );
     }
 
