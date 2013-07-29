@@ -38,6 +38,28 @@
         S.Controls.start();
         
         requestAnimFrame( animate );
+        
+        
+        //object pooling test
+        //we create 3 enemies in pool
+        var enemies = [new S.Enemy(), new S.Enemy()];
+        var poolEnemy = new S.Pool(enemies);
+        //we want 3 enemies, the pool only contain 2, so the third will wait
+        poolEnemy.act(function(e, pool){
+            console.log(1);
+            console.log(e);
+            setTimeout(function() {
+                poolEnemy.add(e);
+            }, 2000); //2 secondes after, we free the first enemy, so the can could be get
+        });
+        poolEnemy.act(function(e, pool){
+            console.log(2);
+            console.log(e);
+        });
+        poolEnemy.act(function(e, pool){
+            console.log(3);
+            console.log(e);
+        });
     }
 
 	function animate() {
@@ -46,6 +68,9 @@
 	    // render the stage   
 	    renderer.render(stage);
 	}
+    
+    
+
 
 
 })();
