@@ -18,14 +18,12 @@ S.Ship = function() {
     this.MAX_X = S.Config.width - this.width / 2;
     this.MAX_Y = S.Config.height - this.height / 2;
     
-    console.log(PIXI);
-    
     this.animationSpeed = 0.2;
     this.play();
 }
 
 S.Ship.constructor = S.Ship;
-// Ship object extend PIXI Sprite object
+// Ship object extend PIXI Movieclip object
 S.Ship.prototype = Object.create( PIXI.MovieClip.prototype );
 
 /**
