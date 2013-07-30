@@ -20,9 +20,9 @@ S.EnemiesManager = function() {
     this.pool = new S.Pool(tmpEnemies);
     
     
-    this.MIN_BETWEEN_WAVE = 8000;
-    this.MAX_BETWEEN_WAVE = 12000;
-    this.COEFF_DISPERSSION_X = 0.5;
+    this.MIN_BETWEEN_WAVE = 10000;
+    this.MAX_BETWEEN_WAVE = 14000;
+    this.COEFF_DISPERSSION_X = 0.45;
     
     this.timerWave = null;
     
@@ -60,7 +60,7 @@ S.EnemiesManager.prototype.play = function() {
 S.EnemiesManager.prototype.newWave = function() {
     var scope = this;
     
-    var nbEnemies = S.Utils.randomBetween(5, 10);
+    var nbEnemies = S.Utils.randomBetween(2, 8);
     console.log('WAVE');
     while(nbEnemies--) {
         this.pool.act(function(e, pool) {
