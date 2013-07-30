@@ -42,15 +42,7 @@
         requestAnimFrame( animate );
         
     }
-    /*
-    //test for pausing and resuming the enemies
-    setTimeout(function() {
-        enemiesManager.stop();
-    }, 4000);
-    setTimeout(function() {
-        enemiesManager.play();
-    }, 6000);
-    */
+    
 	function animate() {
 	    requestAnimFrame( animate );
 		

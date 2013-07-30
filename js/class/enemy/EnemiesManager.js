@@ -1,8 +1,6 @@
 S.EnemiesManager = function() {
     PIXI.DisplayObjectContainer.call( this );
-    var scope = this;
-    //object pooling test
-    //we create 3 enemies in pool
+    
     var totalEnemies = 20;
     this.enemies = [];
     var tmpEnemies = [];
@@ -20,43 +18,27 @@ S.EnemiesManager = function() {
     this.pool = new S.Pool(tmpEnemies);
     
     
-    this.MIN_BETWEEN_WAVE = 10000;
-    this.MAX_BETWEEN_WAVE = 14000;
-    this.COEFF_DISPERSSION_X = 0.45;
+    this.MIN_BETWEEN_WAVE = 440;
+    this.MAX_BETWEEN_WAVE = 540;
+    this.COEFF_DISPERSSION_X = 0.35;
     
-    this.timerWave = null;
-    
-    this.play();
-    
+    this.nbFrameBeforeNextWave = S.Utils.randomBetween(30, 60);
 }
 
-S.EnemiesManager.constructor = S.Background;
+S.EnemiesManager.constructor = S.EnemiesManager;
 S.EnemiesManager.prototype = Object.create( PIXI.DisplayObjectContainer.prototype );
 
-S.EnemiesManager.prototype.stop = function() {
 
-    var i = this.enemies.length;
-    while(i--) {
-        this.enemies[i].stop();
+S.EnemiesManager.prototype.updateTransform = function() {
+    this.nbFrameBeforeNextWave--;
+    
+    if(this.nbFrameBeforeNextWave === 0) {
+        this.newWave();
     }
-    if(this.timerWave) {
-        clearTimeout(this.timerWave);
-        this.timerWave = null;
-    }
+    
+    PIXI.DisplayObjectContainer.prototype.updateTransform.call( this );
 }
-S.EnemiesManager.prototype.play = function() {
-    //launch first wave
-    var scope = this;
-    //if we resume the game, we restart the enemy previously playing
-    var i = this.enemies.length;
-    while(i--) {
-        this.enemies[i].visible && this.enemies[i].play();
-    }
-    //we launch a wave
-    this.timerWave = setTimeout(function() {
-        scope.newWave.call(scope);
-    }, S.Utils.randomBetween(2000, 4000));
-}
+
 S.EnemiesManager.prototype.newWave = function() {
     var scope = this;
     
@@ -70,7 +52,5 @@ S.EnemiesManager.prototype.newWave = function() {
         });
     }
     
-    this.timerWave = setTimeout(function() {
-        scope.newWave.call(scope);
-    }, S.Utils.randomBetween(this.MIN_BETWEEN_WAVE, this.MAX_BETWEEN_WAVE));
+    this.nbFrameBeforeNextWave = S.Utils.randomBetween(this.MIN_BETWEEN_WAVE, this.MAX_BETWEEN_WAVE);
 };
