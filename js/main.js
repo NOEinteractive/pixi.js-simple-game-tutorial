@@ -11,12 +11,10 @@
     document.body.appendChild(renderer.view);
     
     //here we just doing some tests for now
-	var bkg1 = null,
-        bkg2 = null,
-      ship = null;
+	var bkg1, bkg2, ship, enemiesManager = null;
     
     // load all needed assets
-    var loader = new PIXI.AssetLoader(['img/bkg-1.jpg', 'img/bkg-2.jpg', 'img/ship.json', 'img/starfield-1.png']);
+    var loader = new PIXI.AssetLoader(['img/bkg-1.jpg', 'img/bkg-2.jpg', 'img/ship.json','img/enemy.json', 'img/starfield-1.png']);
     loader.onComplete = onAssetsLoaded;
 	loader.load();
     
@@ -34,34 +32,25 @@
         ship = new S.Ship;
         stage.addChild(ship);
         
+        //create the enemy Manager
+        enemiesManager = new S.EnemiesManager();
+        stage.addChild(enemiesManager);
+        
         // init controls
         S.Controls.start();
         
         requestAnimFrame( animate );
         
-        
-        //object pooling test
-        //we create 3 enemies in pool
-        var enemies = [new S.Enemy(), new S.Enemy()];
-        var poolEnemy = new S.Pool(enemies);
-        //we want 3 enemies, the pool only contain 2, so the third will wait
-        poolEnemy.act(function(e, pool){
-            console.log(1);
-            console.log(e);
-            setTimeout(function() {
-                poolEnemy.add(e);
-            }, 2000); //2 secondes after, we free the first enemy, so the can could be get
-        });
-        poolEnemy.act(function(e, pool){
-            console.log(2);
-            console.log(e);
-        });
-        poolEnemy.act(function(e, pool){
-            console.log(3);
-            console.log(e);
-        });
     }
-
+    /*
+    //test for pausing and resuming the enemies
+    setTimeout(function() {
+        enemiesManager.stop();
+    }, 4000);
+    setTimeout(function() {
+        enemiesManager.play();
+    }, 6000);
+    */
 	function animate() {
 	    requestAnimFrame( animate );
 		
