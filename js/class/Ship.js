@@ -19,6 +19,8 @@ S.Ship = function() {
     this.MAX_Y = S.Config.height - this.height / 2;
     
     this.animationSpeed = 0.2;
+    this.hitArea = new S.Rectangle(this.position.x, this.position.y, this.width, this.height);
+    this.nbFrame = 0;
     this.play();
 }
 
@@ -53,5 +55,9 @@ S.Ship.prototype.updateTransform = function() {
     this.position.x += this.speedX;
     this.position.x = S.Utils.boundary(this.position.x, this.MIN_X, this.MAX_X);
     
-    PIXI.MovieClip.prototype.updateTransform.call( this );
+    //we update the hitArea
+    this.hitArea.x = this.position.x;
+    this.hitArea.y = this.position.y;
+    
+    PIXI.MovieClip.prototype.updateTransform.call( this ); 
 }

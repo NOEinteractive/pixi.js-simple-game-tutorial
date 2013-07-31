@@ -11,7 +11,7 @@
     document.body.appendChild(renderer.view);
     
     //here we just doing some tests for now
-	var bkg1, bkg2, ship, enemiesManager = null;
+	var bkg1, bkg2, ship, enemiesManager, collisionManager = null;
     
     // load all needed assets
     var loader = new PIXI.AssetLoader(['img/bkg-1.jpg', 'img/bkg-2.jpg', 'img/ship.json','img/enemy.json', 'img/starfield-1.png']);
@@ -36,6 +36,8 @@
         enemiesManager = new S.EnemiesManager();
         stage.addChild(enemiesManager);
         
+        collisionManager = new S.CollisionManager(ship, enemiesManager, {});
+        
         // init controls
         S.Controls.start();
         
@@ -48,6 +50,7 @@
 		
 	    // render the stage   
 	    renderer.render(stage);
+              collisionManager.checkCollision();
 	}
     
     
