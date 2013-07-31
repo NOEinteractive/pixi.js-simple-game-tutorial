@@ -1,7 +1,7 @@
 
 S.Enemy = function() {
     
-    var textures = S.SpriteSheetTextures.getArray('e', '.png', 4);
+    var textures = S.SpriteSheetTextures.getArray('e_f', '.png', 4);
     
     PIXI.MovieClip.call( this, textures );
     

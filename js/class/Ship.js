@@ -20,7 +20,7 @@ S.Ship = function() {
     
     this.animationSpeed = 0.2;
     this.hitArea = new S.Rectangle(this.position.x, this.position.y, this.width, this.height);
-    this.nbFrame = 0;
+    
     this.play();
 }
 
