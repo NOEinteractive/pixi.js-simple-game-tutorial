@@ -22,12 +22,13 @@ S.CollisionManager.prototype.checkCollision= function() {
                             eM[i].touched(bM[a]);
                             bM[a].canRealloc();
                             this.dispatchEvent('ENEMY_TOUCHED');
-                            console.log('ENEMY TOUCHED');
+                            //console.log('ENEMY TOUCHED');
                         }
                     }
                 }
             }
             if(eM[i].hitArea.intersectWith(this.ship.hitArea)) {
+                eM[i].canRealloc();
                 this.dispatchEvent('TOUCH_ENEMY');
             }
             
