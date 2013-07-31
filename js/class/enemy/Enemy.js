@@ -11,6 +11,8 @@ S.Enemy = function() {
     this.hitArea = new S.Rectangle(this.position.x, this.position.y, this.width, this.height);
     this.SPEED = 1;
     this.animationSpeed = 0.2;
+    this.startLife = 100;
+    this.life = 100;
 };
 
 S.Enemy.constructor = S.Enemy;
@@ -22,6 +24,8 @@ S.Enemy.prototype = Object.create( PIXI.MovieClip.prototype );
  */
 S.Enemy.prototype.alloc = function() {
     this.visible = true;
+    this.life = 100;
+    this.opacity = 1;
     this.play();
 };
 S.Enemy.prototype.canRealloc = function() {
@@ -44,4 +48,14 @@ S.Enemy.prototype.updateTransform = function() {
         this.hitArea.y = this.position.y;
     }
     PIXI.MovieClip.prototype.updateTransform.call( this );
+};
+
+S.Enemy.prototype.touched = function(bullet) {
+    this.life = this.life - (this.startLife* bullet.damage);
+    console.log('TOUCHED '+this.life);
+    this.opacity = this.life / 100;
+    if(this.life  <= 0) {
+        this.canRealloc();
+    }
+    
 };

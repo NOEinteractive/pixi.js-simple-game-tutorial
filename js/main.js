@@ -40,7 +40,7 @@
         bulletsManager = new S.BulletsManager(ship);
         stage.addChild(bulletsManager);
         
-        collisionManager = new S.CollisionManager(ship, enemiesManager, {});
+        collisionManager = new S.CollisionManager(ship, enemiesManager, bulletsManager);
         
         // init controls
         S.Controls.start();

@@ -7,6 +7,8 @@ S.Bullet = function() {
     
     this.visible = false;
     this.SPEED = 8;
+    
+    this.damage = 0.5;
 }
 
 S.Bullet.constructor = S.Bullet;
