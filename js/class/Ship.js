@@ -13,10 +13,10 @@ S.Ship = function() {
     this.speedX = this.speedY = 0;
     this.ACCELERATION = 0.4;
     this.MAX_SPEED = 6;
-    this.MIN_X = this.width / 2;
-    this.MIN_Y = this.height / 2;
-    this.MAX_X = S.Config.width - this.width / 2;
-    this.MAX_Y = S.Config.height - this.height / 2;
+    this.MIN_X = 0;
+    this.MIN_Y = 0;
+    this.MAX_X = S.Config.width - this.width;
+    this.MAX_Y = S.Config.height - this.height;
     
     this.animationSpeed = 0.2;
     this.hitArea = new S.Rectangle(this.position.x, this.position.y, this.width, this.height);

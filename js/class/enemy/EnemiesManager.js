@@ -48,7 +48,7 @@ S.EnemiesManager.prototype.newWave = function() {
         this.pool.act(function(e, pool) {
             e.alloc();
             e.position.x = S.Utils.randomBetween(S.Config.width, S.Config.width*scope.COEFF_DISPERSSION_X + S.Config.width);
-            e.position.y = S.Utils.randomBetween(10, S.Config.height - 10);
+            e.position.y = S.Utils.randomBetween(10, S.Config.height - 30);
         });
     }
     
