@@ -11,10 +11,10 @@
     document.body.appendChild(renderer.view);
     
     //here we just doing some tests for now
-	var bkg1, bkg2, ship, enemiesManager, collisionManager = null;
+	var bkg1, bkg2, ship, enemiesManager, bulletsManager, collisionManager = null;
     
     // load all needed assets
-    var loader = new PIXI.AssetLoader(['img/bkg-1.jpg', 'img/bkg-2.jpg', 'img/ship.json','img/enemy.json', 'img/starfield-1.png']);
+    var loader = new PIXI.AssetLoader(['img/bkg-1.jpg', 'img/bkg-2.jpg', 'img/ship.json','img/enemy.json', 'img/starfield-1.png', 'img/bullet.png']);
     loader.onComplete = onAssetsLoaded;
 	loader.load();
     
@@ -35,6 +35,10 @@
         //create the enemy Manager
         enemiesManager = new S.EnemiesManager();
         stage.addChild(enemiesManager);
+        
+        //create the bullet Manager
+        bulletsManager = new S.BulletsManager(ship);
+        stage.addChild(bulletsManager);
         
         collisionManager = new S.CollisionManager(ship, enemiesManager, {});
         
