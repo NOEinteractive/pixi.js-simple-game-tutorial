@@ -3,7 +3,7 @@ S.Bullet = function() {
     
     PIXI.Sprite.call( this, PIXI.Texture.fromImage('img/bullet.png') );
     
-    this.anchor.x = this.anchor.y = 0.5;
+    //this.anchor.x = this.anchor.y = 0.5;
     
     this.visible = false;
     this.SPEED = 8;

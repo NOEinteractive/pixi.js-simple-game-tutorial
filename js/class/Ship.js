@@ -7,7 +7,7 @@ S.Ship = function() {
     
     this.position.x = 100;
     this.position.y = 200;
-    this.anchor.x = this.anchor.y = 0.5;
+    //this.anchor.x = this.anchor.y = 0.5;
     
     // moving vars
     this.speedX = this.speedY = 0;

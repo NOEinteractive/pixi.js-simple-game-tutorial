@@ -5,7 +5,7 @@ S.Enemy = function() {
     
     PIXI.MovieClip.call( this, textures );
     
-    this.anchor.x = this.anchor.y = 0.5;
+    //this.anchor.x = this.anchor.y = 0.5;
     
     this.visible = false;
     this.hitArea = new S.Rectangle(this.position.x, this.position.y, this.width, this.height);
