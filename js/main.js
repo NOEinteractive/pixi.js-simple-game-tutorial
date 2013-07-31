@@ -54,7 +54,7 @@
 		
 	    // render the stage   
 	    renderer.render(stage);
-              collisionManager.checkCollision();
+        collisionManager.checkCollision();
 	}
     
     
