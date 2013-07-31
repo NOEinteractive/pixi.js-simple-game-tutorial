@@ -1,7 +1,7 @@
 
 S.Enemy = function() {
     
-    var textures = S.SpriteSheetTextures.getArray('e_f', '.png', 4);
+    var textures = S.SpriteSheetTextures.getArray('e_f', '.png', 6);
     
     PIXI.MovieClip.call( this, textures );
     
@@ -10,6 +10,7 @@ S.Enemy = function() {
     this.visible = false;
     this.hitArea = new S.Rectangle(this.position.x, this.position.y, this.width, this.height);
     this.SPEED = 1;
+    this.animationSpeed = 0.2;
 };
 
 S.Enemy.constructor = S.Enemy;
