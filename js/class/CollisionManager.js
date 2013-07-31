@@ -19,6 +19,7 @@ S.CollisionManager.prototype.checkCollision= function() {
                 if(bM[a]) {
                     if(eM[i].hitArea.contain(bM[a].position)) {
                         eM[i].touched(bM[a]);
+                        bM[a].canRealloc();
                         this.dispatchEvent('ENEMY_TOUCHED');
                         console.log('ENEMY TOUCHED');
                     }
