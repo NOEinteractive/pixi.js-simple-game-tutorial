@@ -37,7 +37,7 @@ S.BulletsManager.prototype.shoot = function() {
     
     this.pool.act(function(b, pool) {
         b.alloc();
-        b.position.x = scope.ship.position.x + scope.ship.width / 2;
+        b.position.x = scope.ship.position.x + scope.ship.width - b.SPEED;
         b.position.y = scope.ship.position.y + scope.ship.height / 2;
     });
     
