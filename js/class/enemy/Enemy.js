@@ -25,7 +25,7 @@ S.Enemy.prototype = Object.create( PIXI.MovieClip.prototype );
 S.Enemy.prototype.alloc = function() {
     this.visible = true;
     this.life = 100;
-    this.opacity = 1;
+    this.alpha = 1;
     this.play();
 };
 S.Enemy.prototype.canRealloc = function() {
@@ -42,7 +42,6 @@ S.Enemy.prototype.updateTransform = function() {
             this.canRealloc();
         }
         
-        //@todo : handle colision with ship/bullet
         //we update the hitArea
         this.hitArea.x = this.position.x;
         this.hitArea.y = this.position.y;
@@ -53,7 +52,7 @@ S.Enemy.prototype.updateTransform = function() {
 S.Enemy.prototype.touched = function(bullet) {
     this.life = this.life - (this.startLife* bullet.damage);
     console.log('TOUCHED '+this.life);
-    this.opacity = this.life / 100;
+    this.alpha = this.life / 100;
     if(this.life  <= 0) {
         this.canRealloc();
     }
