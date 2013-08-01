@@ -16,14 +16,12 @@ S.CollisionManager.prototype.checkCollision= function() {
         if(eM[i].visible) {
             var a = bM.length;
             while(a--) { //test with bullet
-                if(bM[a]) {
-                    if(bM[a].visible) {
-                        if(eM[i].hitArea.contain(bM[a].position)) {
-                            eM[i].touched(bM[a]);
-                            bM[a].canRealloc();
-                            this.dispatchEvent('ENEMY_TOUCHED');
-                            //console.log('ENEMY TOUCHED');
-                        }
+                if(bM[a].visible) {
+                    if(eM[i].hitArea.contain(bM[a].position)) {
+                        eM[i].touched(bM[a]);
+                        bM[a].canRealloc();
+                        this.dispatchEvent('ENEMY_TOUCHED');
+                        //console.log('ENEMY TOUCHED');
                     }
                 }
             }
