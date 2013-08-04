@@ -12,6 +12,12 @@ S.Controls = {
     RIGHT: 39,
     S: 83,
     
+    // check if device have touch
+    touchDevice: !!('ontouchstart' in window) || !!('onmsgesturechange' in window),
+    
+    touchX: null,
+    touchY: null,
+    
     keysPressed: [],
     
     /**
@@ -19,12 +25,27 @@ S.Controls = {
      */
     start: function() {
         var scope = this;
-        document.addEventListener('keydown', function(e) {
-            scope.keyDown(e);
-        });
-        document.addEventListener('keyup', function(e) {
-            scope.keyUp(e);
-        });
+        
+        if(this.touchDevice) {
+            document.addEventListener('touchstart', function(e) {
+                scope.touch(e);
+                e.preventDefault();
+                return false;
+            });
+            document.addEventListener('touchmove', function(e) {
+                scope.touch(e);
+                e.preventDefault();
+                return false;
+            });
+        } else {
+            document.addEventListener('keydown', function(e) {
+                scope.keyDown(e);
+            });
+            document.addEventListener('keyup', function(e) {
+                scope.keyUp(e);
+            });
+        }
+        
     },
     
     keyDown: function(e) {
@@ -41,6 +62,14 @@ S.Controls = {
      */
     pressed: function(keyCode) {
         return this.keysPressed[keyCode];
+    },
+    
+    /**
+     * save touch position
+     */
+    touch: function(e) {
+        this.touchX = e.touches[0].pageX;
+        this.touchY = e.touches[0].pageY;
     }
     
 }
