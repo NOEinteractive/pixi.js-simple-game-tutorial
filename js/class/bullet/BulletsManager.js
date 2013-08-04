@@ -25,7 +25,7 @@ S.BulletsManager.prototype = Object.create( PIXI.DisplayObjectContainer.prototyp
 S.BulletsManager.prototype.updateTransform = function() {
     this.shootTimer--;
     
-    if(this.shootTimer <= 0 && (S.Controls.pressed(S.Controls.S) || S.Controls.touchDevice)) {
+    if(this.shootTimer <= 0 && (S.Controls.pressed(S.Controls.S) || S.Controls.touchDevice) && this.ship.visible) {
         this.shoot();
     }
     

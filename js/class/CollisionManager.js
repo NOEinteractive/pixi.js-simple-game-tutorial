@@ -25,8 +25,9 @@ S.CollisionManager.prototype.checkCollision= function() {
                     }
                 }
             }
-            if(eM[i].hitArea.intersectWith(this.ship.hitArea)) {
+            if(this.ship.visible && eM[i].hitArea.intersectWith(this.ship.hitArea)) {
                 eM[i].canRealloc();
+                this.ship.hitEnnemy();
                 this.dispatchEvent('TOUCH_ENEMY');
             }
             

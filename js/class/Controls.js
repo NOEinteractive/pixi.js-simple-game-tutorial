@@ -27,23 +27,37 @@ S.Controls = {
         var scope = this;
         
         if(this.touchDevice) {
-            document.addEventListener('touchstart', function(e) {
+            this.touchHandler = function(e) {
                 scope.touch(e);
                 e.preventDefault();
                 return false;
-            });
-            document.addEventListener('touchmove', function(e) {
-                scope.touch(e);
-                e.preventDefault();
-                return false;
-            });
+            };
+            document.addEventListener('touchstart', this.touchHandler);
+            document.addEventListener('touchmove', this.touchHandler);
         } else {
-            document.addEventListener('keydown', function(e) {
+            this.keyDownHandler = function(e) {
                 scope.keyDown(e);
-            });
-            document.addEventListener('keyup', function(e) {
+            };
+            document.addEventListener('keydown', this.keyDownHandler);
+            
+            this.keyUpHandler = function(e) {
                 scope.keyUp(e);
-            });
+            };
+            document.addEventListener('keyup', this.keyUpHandler);
+        }
+        
+    },
+    
+    stop: function() {
+        
+        if(this.touchDevice) {
+            document.removeEventListener('touchstart', this.touchHandler);
+            document.removeEventListener('touchmove', this.touchHandler);
+            this.touchX = this.touchY = null;
+        } else {
+            document.removeEventListener('keydown', this.keyDownHandler);
+            document.removeEventListener('keyup', this.keyUpHandler);
+            this.keysPressed = [];
         }
         
     },

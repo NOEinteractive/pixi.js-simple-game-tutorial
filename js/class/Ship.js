@@ -18,6 +18,9 @@ S.Ship = function() {
     this.MAX_X = S.Config.width - this.width;
     this.MAX_Y = S.Config.height - this.height;
     
+    // life
+    this.life = 4;
+    
     this.animationSpeed = 0.2;
     this.hitArea = new S.Rectangle(this.position.x, this.position.y, this.width, this.height);
     
@@ -27,6 +30,23 @@ S.Ship = function() {
 S.Ship.constructor = S.Ship;
 // Ship object extend PIXI Movieclip object
 S.Ship.prototype = Object.create( PIXI.MovieClip.prototype );
+
+/**
+ * ship hit an ennemy, decrease life
+ */
+S.Ship.prototype.hitEnnemy = function() {
+    this.life--;
+    this.alpha = this.life / 4;
+    if(this.life === 0) this.die();
+}
+
+/**
+ * life is over
+ */
+S.Ship.prototype.die = function() {
+    this.visible = false;
+    S.Controls.stop();
+}
 
 /**
  * override updateTransform method, called each frame
