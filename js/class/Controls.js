@@ -20,11 +20,45 @@ S.Controls = {
     
     keysPressed: [],
     
+    leapMotionEnable : !!window.Leap,
+    leapController : null,
+    leapMotionConnected : false,
+    leapX : 0,
+    leapY : 0,
     /**
      * init listeners
      */
     start: function() {
         var scope = this;
+        //if leap motion framework is available, we try to connect to a leap motion device
+        if(this.leapMotionEnable) {
+            this.leapController = new Leap.Controller();
+            
+            this.leapController.on('connect', function() {
+                scope.leapMotionConnected = true;
+                Leap.loop(function(frame){
+                    var x, y, z = 0;
+                    
+                    //we only use the first finger we found
+                    //for this test we tell that : 
+                    //x vary between -300 & +300 (approximately) //in fact we make as if leap go from -100 to 300, more easy to use
+                    //y vary between 40 & +400 (approximately)
+                    if(frame.hands[0] && frame.hands[0].fingers[0]){
+                        x = Math.max(frame.hands[0].fingers[0].tipPosition[0] + 100, 0)
+                        scope.leapX = x * S.Config.width / 400;
+                        y = Math.max(frame.hands[0].fingers[0].tipPosition[1] - 50, 0);
+                        scope.leapY = S.Config.height - (y * S.Config.height / 250);
+                    } else {
+                        scope.leapY = S.Config.height/2 - 20;
+                        scope.leapX = 40;
+                    }
+                });
+        
+            });
+
+            this.leapController.connect();
+            
+        }
         
         if(this.touchDevice) {
             this.touchHandler = function(e) {
@@ -71,16 +105,16 @@ S.Controls = {
     },
     
     /**
-     * check if a key is currently pressed
-     * @var int keyCode
-     */
+* check if a key is currently pressed
+* @var int keyCode
+*/
     pressed: function(keyCode) {
         return this.keysPressed[keyCode];
     },
     
     /**
-     * save touch position
-     */
+* save touch position
+*/
     touch: function(e) {
         this.touchX = e.touches[0].pageX;
         this.touchY = e.touches[0].pageY;

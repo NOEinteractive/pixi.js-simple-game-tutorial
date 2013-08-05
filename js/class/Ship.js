@@ -53,6 +53,10 @@ S.Ship.prototype.die = function() {
  */
 S.Ship.prototype.updateTransform = function() {
     
+    if(S.Controls.leapMotionConnected) {
+        this.position.x = S.Controls.leapX;
+        this.position.y = S.Controls.leapY;
+    }
     // touch controls
     if(S.Controls.touchDevice && S.Controls.touchX != null && S.Controls.touchY != null) {
         this.position.x = S.Controls.touchX + 20;
