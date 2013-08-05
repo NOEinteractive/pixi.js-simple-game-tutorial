@@ -48,3 +48,10 @@ table {
 }
 
 /* main style for PIXI.js simple game tuto */
+body {
+    background: black;
+}
+canvas {
+    display: block;
+    margin: auto;
+}
