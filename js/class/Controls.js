@@ -45,9 +45,9 @@ S.Controls = {
                     //y vary between 40 & +400 (approximately)
                     if(frame.hands[0] && frame.hands[0].fingers[0]){
                         x = Math.max(frame.hands[0].fingers[0].tipPosition[0] + 100, 0)
-                        scope.leapX = x * S.Config.width / 400;
+                        scope.leapX = x * S.Config.width / 300;
                         y = Math.max(frame.hands[0].fingers[0].tipPosition[1] - 50, 0);
-                        scope.leapY = S.Config.height - (y * S.Config.height / 250);
+                        scope.leapY = S.Config.height - (y * S.Config.height / 200);
                     } else {
                         scope.leapY = S.Config.height/2 - 20;
                         scope.leapX = 40;
