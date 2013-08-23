@@ -10,7 +10,7 @@ S.EnemiesManager = function() {
         var e = new S.Enemy();
         e.position.x = S.Config.width + 200;
         this.addChild(e);
-        //we use two different variable
+        //we use two different variables
         //this.enemies will keep all the enemis
         //tmpEnemies is only used to create the pool
         //if we use the same variable, the pool only get a reference to this.enemies and so modifie our array
@@ -19,7 +19,7 @@ S.EnemiesManager = function() {
     }
     this.pool = new S.Pool(tmpEnemies);
     
-    
+    // some config variables, they will help us to easily configure our enemies
     this.MIN_BETWEEN_WAVE = 440;
     this.MAX_BETWEEN_WAVE = 540;
     this.COEFF_DISPERSSION_X = 0.5;
