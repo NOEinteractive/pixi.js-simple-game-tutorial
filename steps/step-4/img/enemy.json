@@ -1,0 +1,60 @@
+{"frames": {
+
+"e_f1.png":
+{
+	"frame": {"x":2,"y":34,"w":40,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":40,"h":30},
+	"sourceSize": {"w":40,"h":40}
+},
+"e_f2.png":
+{
+	"frame": {"x":86,"y":2,"w":40,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":40,"h":30},
+	"sourceSize": {"w":40,"h":40}
+},
+"e_f3.png":
+{
+	"frame": {"x":44,"y":2,"w":40,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":40,"h":30},
+	"sourceSize": {"w":40,"h":40}
+},
+"e_f4.png":
+{
+	"frame": {"x":2,"y":2,"w":40,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":40,"h":30},
+	"sourceSize": {"w":40,"h":40}
+},
+"e_f5.png":
+{
+	"frame": {"x":44,"y":2,"w":40,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":40,"h":30},
+	"sourceSize": {"w":40,"h":40}
+},
+"e_f6.png":
+{
+	"frame": {"x":86,"y":2,"w":40,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":40,"h":30},
+	"sourceSize": {"w":40,"h":40}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "enemy.png",
+	"format": "RGBA8888",
+	"size": {"w":128,"h":128},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7214826e4d868eba0e8acba31b0b8594$"
+}
+}

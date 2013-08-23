@@ -9,5 +9,11 @@ S.Utils = {
      */
     boundary: function(value, min, max) {
         return value < min ? min : value > max ? max : value;
+    },
+    /**
+     * calcul a random number between min and max
+     */
+    randomBetween : function(min, max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
     }
 }
