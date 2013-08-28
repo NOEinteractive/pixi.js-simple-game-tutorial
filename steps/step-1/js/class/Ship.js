@@ -1,26 +1,26 @@
-//our first class, the Ship!
+//Notre première classe : le vaisseau!
 S.Ship = function() {
     
     var textures = S.SpriteSheetTextures.getArray('f', '.png', 4);
     
-    //call the parent (PIXI.Movieclip) constructor
+    //appele le constructeur du parent (PIXI.Movieclip)
     PIXI.MovieClip.call( this, textures );
     
     this.position.x = 100;
-    this.position.y = S.Config.height / 2;//center verticaly our ship
+    this.position.y = S.Config.height / 2;//centre verticalement notre vaisseau
     
     this.animationSpeed = 0.2;
     
-    //playing the animation
+    //joue l'animation du sprite
     this.play();
 }
 
 S.Ship.constructor = S.Ship;
-// Ship object extend PIXI Movieclip object
+// Notre vaisseau hérite de PIXI Movieclip
 S.Ship.prototype = Object.create( PIXI.MovieClip.prototype );
 
 /**
- * override updateTransform method, called each frame
+ * On override la méthode updateTransform appelée à chaque frame
  */
 S.Ship.prototype.updateTransform = function() {
     
