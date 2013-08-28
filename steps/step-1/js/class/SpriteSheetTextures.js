@@ -1,12 +1,11 @@
-
 S.SpriteSheetTextures = {
     
     /**
-     * get array of textures from a spritesheet
-     * @param name name of file
-     * @param ext extension of file
-     * @param count number of frames to get
-     * @param start number of first frame to get
+     * retourne le tableau de textures d'une spritesheet pour utiliser dans un objet movieclip
+     * @param name nom du fichier contenant la spritesheet
+     * @param ext extension du fichier contenant la spritesheet
+     * @param count nombre de frames à récupérer
+     * @param start numéro de la première frame à récupérer (1 par défaut)
      */
     getArray: function(name, ext, count, start) {
         start = start || 1;
