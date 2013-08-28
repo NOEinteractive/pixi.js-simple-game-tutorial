@@ -1,45 +1,45 @@
 // pour ne pas polluer le scope global, nous encapsulons le code dans une fonction autoappelante
 (function() {
-    // create an new instance of a pixi stage
+    // on crée une nouvelle Scene (Stage) PIXI
 	var stage = new PIXI.Stage(0x000000);
     
-    //we store global data in S.Config
+    //On crée un objet global S.Config pour y stocker différentes informations générale
 	S.Config = {
         width : Math.min(600, window.innerWidth),
         height : Math.min(400, window.innerHeight)
     };
     
-	// create a renderer instance 
+	// on crée un renderer PICI
 	var renderer = PIXI.autoDetectRenderer(S.Config.width, S.Config.height);
-    //append the view in the body
+    //on ajoute la view du renderer dans le DOM
     document.body.appendChild(renderer.view);
     
-    //here we just doing some tests for now
-    //our main ship
+    //Notre vaisseau principal
 	var ship = null;
     
-    // load all needed assets
+    // On charge les assets (images / sprite (json) )  nécéssaire
     var loader = new PIXI.AssetLoader(['img/ship.json']);
     loader.onComplete = onAssetsLoaded;
 	loader.load();
     
     function onAssetsLoaded() {
         
-        // create ship object
+        // On crée une nouvelle instance de vaisseau
         ship = new S.Ship;
         
-        //and addChild it in the stage
+        //et on ajoute notre vaisseau dans la scene
         stage.addChild(ship);
         
+        //boucle d'animation
         requestAnimFrame( animate );
         
     }
     
-    //function called each frame to render the game
+    //function appelée a chaque frame pour rendre notre jeu
 	function animate() {
 	    requestAnimFrame( animate );
 		
-	    // render the stage   
+	    // rendu de la scene
 	    renderer.render(stage);
 	}
     
