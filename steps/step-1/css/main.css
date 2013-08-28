@@ -1,3 +1,5 @@
+/* reset CSS de Eric Meyer, vous pouvez aussi utiliser Normalize.css ou ce dont vous avez l'habitude!*/
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -47,8 +49,8 @@ table {
 	border-spacing: 0;
 }
 
-/* main style for PIXI.js simple game tuto */
-/* just center our game and add a black background */
+/* Style principal pour notre jeu PIXI.js */
+/* Pour l'instant, on centre juste notre jeu et on met un fond noir */
 body {
     background: black;
 }
