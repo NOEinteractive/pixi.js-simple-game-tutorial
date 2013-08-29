@@ -1,9 +1,9 @@
-// pour ne pas polluer le scope global, nous encapsulons le code dans une fonction autoappelante
+// Pour ne pas polluer le scope global, nous encapsulons le code dans une fonction auto-appelante
 (function() {
     // on crée une nouvelle Scene (Stage) PIXI
 	var stage = new PIXI.Stage(0x000000);
     
-    //On crée un objet global S.Config pour y stocker différentes informations générale
+    //On crée un objet global S.Config pour y stocker différentes informations générales
 	S.Config = {
         width : Math.min(600, window.innerWidth),
         height : Math.min(400, window.innerHeight)
@@ -17,7 +17,7 @@
     //Notre vaisseau principal
 	var ship = null;
     
-    // On charge les assets (images / sprite (json) )  nécéssaire
+    // On charge les assets (images / sprite (json) )  nécéssaires
     var loader = new PIXI.AssetLoader(['img/ship.json']);
     loader.onComplete = onAssetsLoaded;
 	loader.load();
@@ -35,7 +35,7 @@
         
     }
     
-    //function appelée a chaque frame pour rendre notre jeu
+    //fonction appelée a chaque frame pour rendre notre jeu
 	function animate() {
 	    requestAnimFrame( animate );
 		
