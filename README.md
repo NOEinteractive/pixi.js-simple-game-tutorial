@@ -1,6 +1,8 @@
 A simple game tutorial for pixi.js framework
 ============================
 
-Here we will describe all the step we follow to create a simple 2d game using pixi.js framework.
+The "leapmotion" branch is just a quick test to adapt existing code with leapmotion
+
+demo : https://vimeo.com/71820265
 
 
